@@ -1,0 +1,10 @@
+{"id": "ai-001", "technology": "神经网络剪枝", "application": "模型压缩", "difficulty": 8, "advantage": "减少模型体积75%", "disadvantage": "需要大量校准数据", "year": 2023}
+{"id": "ai-002", "technology": "联邦学习框架", "application": "隐私保护", "difficulty": 7, "advantage": "数据不出本地", "disadvantage": "通信成本较高", "year": 2022}
+{"id": "ai-003", "technology": "transformer优化", "application": "NLP加速", "difficulty": 9, "advantage": "推理速度提升3倍", "disadvantage": "显存占用增加20%", "year": 2024}
+{"id": "ai-004", "technology": "量子机器学习", "application": "药物研发", "difficulty": 10, "advantage": "指数级运算加速", "disadvantage": "需要绝对零度环境", "year": 2025}
+{"id": "ai-005", "technology": "神经辐射场", "application": "三维重建", "difficulty": 8, "advantage": "渲染精度提升40%", "disadvantage": "训练时间长达72小时", "year": 2023}
+{"id": "ai-006", "technology": "多模态融合", "application": "跨模态搜索", "difficulty": 7, "advantage": "支持图文联合检索", "disadvantage": "需要对齐特征空间", "year": 2024}
+{"id": "ai-007", "technology": "知识蒸馏", "application": "模型迁移", "difficulty": 6, "advantage": "小模型达95%大模型精度", "disadvantage": "依赖教师模型质量", "year": 2022}
+{"id": "ai-008", "technology": "强化学习框架", "application": "游戏AI", "difficulty": 9, "advantage": "自主策略进化能力", "disadvantage": "reward设计困难", "year": 2023}
+{"id": "ai-009", "technology": "生成对抗网络", "application": "图像合成", "difficulty": 8, "advantage": "生成高分辨率图像", "disadvantage": "模式崩溃风险", "year": 2023}
+{"id": "ai-010", "technology": "因果推理模型", "application": "医疗诊断", "difficulty": 9, "advantage": "可解释性强", "disadvantage": "需要因果图标注", "year": 2024}

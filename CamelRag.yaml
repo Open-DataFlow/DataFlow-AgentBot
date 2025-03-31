@@ -1,0 +1,11 @@
+api_key: sk-EeIRGDMK9OYGtsosbo9XWBg30CuW2SUltT8Zfy7Tw1Ow51Hi
+kb_id: 2
+output_path: ../data/knowledgebase/
+#---------------------------------------------------------------构建RAG---------------------------------------------------------------
+db_path: local_data
+chunk_size: 50000
+contents: ["https://www.zhihu.com/question/652674711/answer/3617998488",'https://mmssai.com/archives/30317']
+collection_name: LearnRAG
+query: 什么是RAG？？
+model_name: text-embedding-ada-002
+path: local_data

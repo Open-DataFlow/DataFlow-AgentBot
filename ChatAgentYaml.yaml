@@ -1,0 +1,5 @@
+API_KEY: sk-EeIRGDMK9OYGtsosbo9XWBg30CuW2SUltT8Zfy7Tw1Ow51Hi
+CHAT_API_URL: https://api.chatanywhere.com.cn/v1/chat/completions
+MODEL: gpt-4o
+local: false #读入本地知识库还是获取知识库的摘要信息
+TaskYaml: TaskInfo.yaml
