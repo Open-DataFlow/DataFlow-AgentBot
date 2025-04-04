@@ -7,8 +7,28 @@ import os
 from typing import List, Dict
 from pathlib import Path
 
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
 MAX_JSONL_LINES = 50
 DATA_DIR = Path("./data/knowledgebase")  # 本地数据存储目录
+
+
+class UserMessage(BaseModel):
+    content: str
+class ChatAgentRequest(BaseModel):
+    user_id: int
+    message: UserMessage
+    model: str
+    kb_id: str  # 改为文件标识符
+    temperature: str
+    max_tokens: str
+    language :str
+class ChatResponse(BaseModel):
+    id: str
+    name: str
+    info: str
+
 def validate_filename(kb_id: str) -> Path:
     """验证并生成安全文件路径"""
     if not kb_id.endswith(".jsonl"):
@@ -60,3 +80,32 @@ def format_context(data: List[Dict]) -> str:
             context.append(f"- {key}: {str(value)[:200]}")  # 限制单个字段长度
 
     return "\n".join(context)
+
+def get_kb_content(kb_id:str):
+    try:
+        with open(f"{parent_dir}/data/knowledgebase/{kb_id}.json", 'r', encoding='utf-8') as f:
+            kb_content = json.load(f)
+        return kb_content
+    except FileNotFoundError:
+        print(f"Error: The JSON file {kb_id}.json was not found!")
+    except json.JSONDecodeError:
+        print(f"Error: Unable to parse the JSON file {kb_id}.json!")
+    except Exception as e:
+        print(f"Error: An unknown error occurred: {e}")
+    return None
+
+def generate_pre_task_params(system_template:str,task_template:str,request:ChatAgentRequest):
+    return {
+        "templates": [
+            {
+                "name": system_template,
+                "params": {}  # 不需要额外参数
+            },
+            {
+                "name": task_template,
+                "params": {
+                    "content": get_kb_content(request.kb_id)
+                }
+            }
+        ]
+    }

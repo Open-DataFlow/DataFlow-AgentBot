@@ -4,6 +4,8 @@ import yaml
 from typing import Dict, Any
 from pathlib import Path
 from AgentRole.TaskDispatcher import Task
+from PromptsTemplates.PromptsGenerator import PromptsTemplateGenerator
+
 
 class AnalystAgent:
     def __init__(self, task: Task):
@@ -14,7 +16,10 @@ class AnalystAgent:
         }
 
     def generate_analysis_report(self) -> Dict[str, Any]:
-        task_description = self.task.get_task_description()
+
+        # task_description = self.task.get_task_description()
+        task_description = self.task.task_template
+
         if task_description is None:
             return {}
 

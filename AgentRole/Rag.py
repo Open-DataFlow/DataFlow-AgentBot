@@ -6,8 +6,6 @@ from ChatAnywhereEmbedding import ChatAnywhereEmbedding
 from qdrant_client import QdrantClient
 import json
 from typing import List, Dict
-
-
 def run_embedding_and_retrieval(config):
     # 2. 创建自定义Embedding实例
     custom_embedding = ChatAnywhereEmbedding(

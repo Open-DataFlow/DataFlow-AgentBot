@@ -1,21 +1,4 @@
-api_key: sk-EeIRGDMK9OYGtsosbo9XWBg30CuW2SUltT8Zfy7Tw1Ow51Hi
+api_key: sk-ao5wGhCOAWidgaEK3WEcqWbk5a1KP8SSMsnOAy9IeRQNylVs
 base_url: https://api.chatanywhere.com.cn/v1
-modelname: gpt-4o
-sys_prompt: |
-  You are a professional data analyst. Please generate a structured JSON report according to the user's question. The fields are as follows:
-  - summary: Summary
-  - total_records: Total number of records in the data
-  - domain_distribution: Dictionary of domain distribution (e.g., {"Technology": 30%, "Medical": 20%})
-  - language_types: List of language types
-  - data_structure: Data structuring type (e.g., {"Structured": 40%, "Unstructured": 60%})
-  - has_sensitive_info: Whether it contains sensitive information
-kb_id: 1
-task_template: |
-  Knowledge base content: {content}
-  Tasks for summarizing the knowledge base:
-  - Generate a detailed summary of this knowledge base as much as possible.
-  - How many data records are there?
-  - What is the domain distribution of the data (such as computer, technology, medical, law, etc.)?
-  - What is the language type of the data (single language/multiple languages)?
-  - Is the data structured (such as tables, key-value pairs) or unstructured (pure text)? What are the respective proportions?
-  - Does the data contain sensitive information (such as personal privacy, business secrets)? What is the proportion?
+modelname: gpt-3.5-turbo
+tasktype: 0
