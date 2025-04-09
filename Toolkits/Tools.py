@@ -21,8 +21,8 @@ class ChatAgentRequest(BaseModel):
     message: UserMessage
     model: str
     kb_id: str  # 改为文件标识符
-    temperature: str
-    max_tokens: str
+    temperature: float
+    max_tokens: int
     language :str
 class ChatResponse(BaseModel):
     id: str

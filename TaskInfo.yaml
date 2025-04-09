@@ -1,4 +1,5 @@
 api_key: sk-ao5wGhCOAWidgaEK3WEcqWbk5a1KP8SSMsnOAy9IeRQNylVs
+#api_key: sk-ffSAwSlifFVkCujrLcUDfamzpVgjliaFJ4zA4sEv3hT6DNe9
 base_url: https://api.chatanywhere.com.cn/v1
-modelname: gpt-3.5-turbo
+modelname: deepseek-r1
 tasktype: 0

@@ -19,7 +19,6 @@ class AnalystAgent:
 
         # task_description = self.task.get_task_description()
         task_description = self.task.task_template
-
         if task_description is None:
             return {}
 
@@ -29,25 +28,33 @@ class AnalystAgent:
                 {"role": "system", "content": self.task.sys_prompt},
                 {"role": "user", "content": task_description}
             ],
-            "response_format": {"type": "json_object"}
+            # "response_format": {"type": "json_object"},
         }
-
+        # print(json_data)
         response = requests.post(
             url=f"{self.task.base_url}/chat/completions",
             headers=self.headers,
             json=json_data
         )
         response.raise_for_status()
-
         result = response.json()
+        # print(result)
         return self._parse_json(result['choices'][0]['message']['content'])
+
 
     def _parse_json(self, json_str: str) -> Dict[str, Any]:
         try:
+            # 尝试直接解析
             return json.loads(json_str)
         except json.JSONDecodeError:
-            cleaned_str = json_str[json_str.find('{'):json_str.rfind('}') + 1]
-            return json.loads(cleaned_str)
+            # 提取首个JSON对象
+            start = json_str.find('{')
+            end = json_str.rfind('}') + 1
+            if start != -1 and end != 0:
+                cleaned_str = json_str[start:end]
+                return json.loads(cleaned_str)
+            else:
+                raise ValueError("No valid JSON found in response")
 
 # if __name__ == "__main__":
 #     task = Task('../TaskInfo.yaml')

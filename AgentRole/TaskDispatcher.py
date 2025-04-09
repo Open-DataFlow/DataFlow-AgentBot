@@ -20,6 +20,8 @@ class Task:
             config = yaml.safe_load(f)
         self.api_key = config['api_key']
         self.base_url = config['base_url']
+        self.task_template = ""
+        self.sys_prompt = ""
         # self.json_path = f"{parent_dir}/data/knowledgebase/{config['kb_id']}.json"
         # 动态渲染所有模板
         for template_cfg in task_params.get("templates", []):

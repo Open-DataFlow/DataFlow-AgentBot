@@ -30,33 +30,46 @@ class AnalysisService:
     def __init__(self, config_path: str,task:Task):
         self.config = Config(config_path)
         self.task =  task
-
     def _build_payload(self, request, context):
-        return {
+        # 基础 payload 结构
+        payload = {
             "model": request.model,
             "messages": [
                 {"role": "system", "content": "Data Analysis Expert"},
-                {"role": "user", "content": f"Context: {context}\nQuestion: {request.message}\n.(Answer in {self.task.prompts_template.output_language}!!!);"}
-            ],
-            "temperature": request.temperature,
-            "max_tokens": request.max_tokens
+                {"role": "user",
+                 "content": f"Context: {context}\nQuestion: {request.message}\n(Answer in {self.task.prompts_template.output_language}!!!)"}
+            ]
         }
-    async def _call_llm_api(self, request, context):
-        async with httpx.AsyncClient() as client:
-            response = await client.post(
-                self.config.CHAT_API_URL,
-                json=self._build_payload(request, context),
-                headers=self.config.HEADER,
-                timeout=15.0
-            )
-            response.raise_for_status()
-            return self._format_response(response)
+        # 根据模型类型添加参数
+        if "gpt" in request.model.lower():  # 兼容 GPT-3.5/GPT-4/GPT-4o 等系列
+            payload['temperature'] = request.temperature
+            payload['max_tokens'] = request.max_tokens
+        return payload
 
-    def _format_response(self, response):
+    async def _call_llm_api(self, request, context):
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.post(
+                    self.config.CHAT_API_URL,
+                    json=self._build_payload(request, context),
+                    headers=self.config.HEADER,
+                    timeout=15.0
+                )
+                response.raise_for_status()
+                return self._format_response(response, context)
+        except httpx.HTTPStatusError as e:
+            error_detail = f"API Error: {e.response.status_code} - {e.response.text}"
+            raise HTTPException(status_code=502, detail=error_detail)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
+    def _format_response(self, response, context):
+        info = response.json()["choices"][0]["message"]["content"]
+        combined_info = f"{context}\n\n{info}"
         return ChatResponse(
             id=str(uuid.uuid4()),
             name="Analysis Agent",
-            info=response.json()["choices"][0]["message"]["content"]
+            info=combined_info
         )
 
     async def process_request(self, request: ChatAgentRequest):
@@ -80,7 +93,7 @@ class AnalysisService:
                             detail=f"File processing error: {str(e)}"
                         )
                     formatted_context = format_context(json_data)
-                    print('kb_content:' + formatted_context)
+                    print('content:' + formatted_context)
                 except HTTPException as e:
                     raise e
                 except Exception as e:
