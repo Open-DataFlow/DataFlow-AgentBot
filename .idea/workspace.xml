@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bd15c5c6-9bb7-4371-90d9-39e209f34f65" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AgentRole/Analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/AgentRole/Analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AgentRole/TaskDispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/AgentRole/TaskDispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatAgentYaml.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ChatAgentYaml.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PromptsTemplates/PromptsGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/PromptsTemplates/PromptsGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServiceManager/AnalysisService.py" beforeDir="false" afterPath="$PROJECT_DIR$/ServiceManager/AnalysisService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskInfo.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskInfo.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Toolkits/Tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Toolkits/Tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743342572243</updated>
-      <workItem from="1743342574039" duration="104169000" />
+      <workItem from="1743342574039" duration="105086000" />
     </task>
     <servers />
   </component>
